@@ -1,0 +1,23 @@
+C:\Users\cruzf\wrk_django_rest_api\recipe-app-api>docker-compose run app sh -c "python manage.py test"
+System check identified no issues (0 silenced).
+E
+======================================================================
+ERROR: app.tests (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: app.tests
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.7/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/local/lib/python3.7/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/app/app/tests.py", line 4, in <module>
+    from app.calc import add, subtract
+ImportError: cannot import name 'subtract' from 'app.calc' (/app/app/calc.py)
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
+
+C:\Users\cruzf\wrk_django_rest_api\recipe-app-api>

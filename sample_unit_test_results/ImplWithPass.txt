@@ -1,0 +1,20 @@
+C:\Users\cruzf\wrk_django_rest_api\recipe-app-api>docker-compose run app sh -c "python manage.py test"
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+.F
+======================================================================
+FAIL: test_subtract_numbers (app.tests.CalcTests)
+Test that values are subtracted and returned
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/app/app/tests.py", line 31, in test_subtract_numbers
+    self.assertEquals(subtract(5, 11), 6) #the way subtract works is subtract the first param from the second param
+AssertionError: None != 6
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.003s
+
+FAILED (failures=1)
+Destroying test database for alias 'default'...
+
+C:\Users\cruzf\wrk_django_rest_api\recipe-app-api>
