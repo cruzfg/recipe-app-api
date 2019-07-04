@@ -1,18 +1,21 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
+                                       PermissionsMixin
+
 
 class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
-        #**extra_fields parameter makes our function a little more felxible
-        #because every time we add new fields to our user it means we don't have
-        #to add them here.
+        # **extra_fields parameter makes our function a little more felxible
+        # because every time we add new fields to our user it means
+        # we don't have
+        # to add them here.
         """Creates and saves a new user"""
         if not email:
-           raise ValueError('User must have an email address')
+            raise ValueError('User must have an email address')
         user = self.model(email=self.normalize_email(email), **extra_fields)
-        user.set_password(password) #using encryption helper function
-        user.save(using=self._db) #using = self._db allows for any db
+        user.set_password(password)  # using encryption helper function
+        user.save(using=self._db)  # using = self._db allows for any db
 
         return user
 
@@ -25,7 +28,8 @@ class UserManager(BaseUserManager):
 
         return user
 
-class User(AbstractBaseUser, PermissionsMixin): #inheritance from 2 classes
+
+class User(AbstractBaseUser, PermissionsMixin):  # inheritance from 2 classes
     """Custom user model that supports using email instead of username."""
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
